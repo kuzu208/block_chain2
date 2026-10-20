@@ -26,12 +26,11 @@ body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
 .panel h2 { margin-bottom: 8px; color: #1b4332; font-size: 1.4rem; font-weight: 600; }
 .panel p { color: #666; font-size: 0.95rem; margin-bottom: 20px; }
 
-/* Form Tra Cứu (Đã sửa lỗi hiển thị ô nhập bằng Grid) */
+/* Form Tra Cứu (Ô nhập ở trên, nút tìm kiếm ở dưới) */
 .inline-form { 
-    display: grid; 
-    grid-template-columns: 1fr 140px; 
+    display: flex; 
+    flex-direction: column; 
     gap: 12px; 
-    align-items: center; 
     margin-top: 15px; 
 }
 .inline-form input { 
@@ -96,5 +95,4 @@ footer { text-align: center; padding: 25px; color: #666; font-size: 0.9rem; bord
 @media (max-width: 768px) {
     .two-columns { grid-template-columns: 1fr; }
     .stats { flex-direction: column; }
-    .inline-form { grid-template-columns: 1fr; }
 }
