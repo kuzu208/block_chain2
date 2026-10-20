@@ -42,14 +42,15 @@
                 </div>
             </div>
 
+            <!-- PHẦN TRA CỨU ĐÃ ĐƯỢC TỐI ƯU GIAO DIỆN -->
             <section class="panel" id="tracuu">
                 <h2>🔎 Tra cứu thửa đất</h2>
                 <p>Nhập mã số thửa đất để xem thông tin.</p>
-                <form id="searchForm" class="inline-form">
-                    <input id="searchId" placeholder="Ví dụ: 202610" required>
-                    <button type="submit">Tìm kiếm</button>
+                <form id="searchForm" style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
+                    <input id="searchId" placeholder="Ví dụ: 202610" required style="width: 100% !important; height: 48px !important; padding: 0 15px !important; border: 2px solid #2d6a4f !important; border-radius: 8px !important; font-size: 1rem !important; box-sizing: border-box !important;">
+                    <button type="submit" style="width: 100% !important; height: 48px !important; background: #2d6a4f !important; color: white !important; border: none !important; border-radius: 8px !important; font-weight: bold !important; font-size: 1rem !important; cursor: pointer !important;">Tìm kiếm</button>
                 </form>
-                <div id="landInfo" class="result">
+                <div id="landInfo" class="result" style="margin-top: 15px;">
                     Nhập mã thửa đất, ví dụ 202610, để bắt đầu tra cứu.
                 </div>
             </section>
