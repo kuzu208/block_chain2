@@ -1,218 +1,97 @@
-```html
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b2545">
-
-    <title>ĐẤTCHAIN - Quản lý quyền sử dụng đất</title>
-
+    <title>Quản lý quyền sử dụng đất</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="navbar">
-        <a class="brand" href="#trangchu">🏡 ĐẤTCHAIN</a>
-
+        <div class="brand">🏡 ĐẤTCHAIN</div>
         <nav>
             <a href="#trangchu">Trang chủ</a>
             <a href="#tracuu">Tra cứu</a>
             <a href="#dangky">Đăng ký đất</a>
             <a href="#chuyennhuong">Chuyển nhượng</a>
         </nav>
-
-        <div class="network">
-            <span id="networkDot" class="network-dot"></span>
-            <span id="networkStatus">Chưa kết nối ví</span>
-        </div>
+        <span class="network">● Bản demo</span>
     </header>
 
     <main>
         <section class="hero" id="trangchu">
-            <div class="hero-content">
-                <p class="eyebrow">ỨNG DỤNG BLOCKCHAIN · ETHEREUM SEPOLIA</p>
-
-                <h1>
-                    Quản lý quyền sử dụng đất
-                    <br>
-                    <span>minh bạch và an toàn</span>
-                </h1>
-
-                <p class="hero-description">
-                    Tra cứu thông tin thửa đất, đăng ký quyền sở hữu
-                    và theo dõi lịch sử chuyển nhượng trên blockchain.
-                </p>
-
-                <div class="hero-actions">
-                    <a class="hero-button" href="#tracuu">
-                        🔍 Bắt đầu tra cứu
-                    </a>
-
-                    <button type="button" class="connect-button" id="connectWallet">
-                        Kết nối MetaMask
-                    </button>
-                </div>
-
-                <p id="walletAddress" class="wallet-address">
-                    Ví chưa được kết nối.
-                </p>
-            </div>
+            <p class="eyebrow">ỨNG DỤNG BLOCKCHAIN</p>
+            <h1>Quản lý quyền sử dụng đất<br>minh bạch và an toàn</h1>
+            <p>Tra cứu thông tin thửa đất và theo dõi lịch sử chuyển nhượng.</p>
+            <a class="button" href="#tracuu">Bắt đầu tra cứu</a>
         </section>
 
         <section class="container">
             <div class="stats">
                 <div class="stat">
-                    <span>Thửa đất đã đăng ký (phiên này)</span>
-                    <strong id="totalLand">0</strong>
-                    <small>Chỉ tính giao dịch thành công trong phiên hiện tại</small>
+                    <span>Tổng số thửa đất</span>
+                    <strong id="totalLand">2</strong>
                 </div>
-
                 <div class="stat">
-                    <span>Chuyển nhượng thành công (phiên này)</span>
+                    <span>Giao dịch trong demo</span>
                     <strong id="totalTransfer">0</strong>
-                    <small>Không phải tổng số giao dịch toàn mạng</small>
                 </div>
-
                 <div class="stat">
-                    <span>Mạng blockchain</span>
-                    <strong class="stat-network">Sepolia</strong>
-                    <small>Mạng thử nghiệm Ethereum</small>
+                    <span>Công nghệ</span>
+                    <strong>Blockchain</strong>
                 </div>
             </div>
 
-            <!-- TRA CỨU THỬA ĐẤT -->
             <section class="panel" id="tracuu">
-                <div class="section-heading">
-                    <span class="section-icon">🔎</span>
-                    <div>
-                        <h2>Tra cứu thửa đất</h2>
-                        <p>Nhập mã số để xem dữ liệu từ smart contract.</p>
-                    </div>
-                </div>
-
-                <form id="searchForm" class="search-form">
-                    <label class="sr-only" for="searchId">
-                        Mã số thửa đất cần tra cứu
-                    </label>
-
-                    <input
-                        id="searchId"
-                        type="number"
-                        min="1"
-                        step="1"
-                        placeholder="Ví dụ: 202610"
-                        required
-                    >
-
-                    <button type="submit" class="primary-button">
-                        Tìm kiếm
-                    </button>
+                <h2>🔎 Tra cứu thửa đất</h2>
+                <p>Nhập mã số thửa đất để xem thông tin.</p>
+                <form id="searchForm" class="inline-form">
+                    <input id="searchId" placeholder="Ví dụ: 202610" required>
+                    <button type="submit">Tìm kiếm</button>
                 </form>
-
-                <div id="landInfo" class="result" aria-live="polite">
+                <div id="landInfo" class="result">
                     Nhập mã thửa đất, ví dụ 202610, để bắt đầu tra cứu.
                 </div>
             </section>
 
             <div class="two-columns">
-                <!-- ĐĂNG KÝ ĐẤT -->
                 <section class="panel" id="dangky">
-                    <div class="section-heading">
-                        <span class="section-icon">＋</span>
-                        <div>
-                            <h2>Đăng ký thửa đất</h2>
-                            <p>Ghi nhận thửa đất trên blockchain.</p>
-                        </div>
-                    </div>
-
-                    <form id="registerForm" class="data-form">
+                    <h2>＋ Đăng ký thửa đất</h2>
+                    <form id="registerForm">
                         <label for="landId">Mã số thửa đất</label>
-                        <input
-                            id="landId"
-                            type="number"
-                            min="1"
-                            step="1"
-                            placeholder="Ví dụ: 202610"
-                            required
-                        >
+                        <input id="landId" placeholder="Ví dụ: 202610" required>
 
                         <label for="area">Diện tích (m²)</label>
-                        <input
-                            id="area"
-                            type="number"
-                            min="1"
-                            step="1"
-                            placeholder="150"
-                            required
-                        >
+                        <input id="area" type="number" min="1" placeholder="150" required>
 
                         <label for="firstOwner">Địa chỉ ví chủ đầu tiên</label>
-                        <input
-                            id="firstOwner"
-                            type="text"
-                            placeholder="0x..."
-                            autocomplete="off"
-                            required
-                        >
+                        <input id="firstOwner" placeholder="0x..." required>
 
-                        <p class="form-hint">
-                            Bạn cần có ETH thử nghiệm Sepolia để trả phí gas.
-                        </p>
-
-                        <button type="submit" class="full-button">
-                            Đăng ký thửa đất
-                        </button>
+                        <button type="submit" class="full-button">Đăng ký thửa đất</button>
                     </form>
                 </section>
 
-                <!-- CHUYỂN NHƯỢNG -->
                 <section class="panel" id="chuyennhuong">
-                    <div class="section-heading">
-                        <span class="section-icon">⇄</span>
-                        <div>
-                            <h2>Chuyển nhượng</h2>
-                            <p>Chuyển quyền sở hữu sang ví mới.</p>
-                        </div>
-                    </div>
-
-                    <form id="transferForm" class="data-form">
+                    <h2>⇄ Chuyển nhượng</h2>
+                    <form id="transferForm">
                         <label for="transferId">Mã số thửa đất</label>
-                        <input
-                            id="transferId"
-                            type="number"
-                            min="1"
-                            step="1"
-                            placeholder="Ví dụ: 202610"
-                            required
-                        >
+                        <input id="transferId" placeholder="Ví dụ: 202610" required>
+
+                        <label for="currentOwner">Ví chủ hiện tại</label>
+                        <input id="currentOwner" placeholder="0x..." required>
 
                         <label for="newOwner">Ví chủ sở hữu mới</label>
-                        <input
-                            id="newOwner"
-                            type="text"
-                            placeholder="0x..."
-                            autocomplete="off"
-                            required
-                        >
+                        <input id="newOwner" placeholder="0x..." required>
 
-                        <p class="form-hint">
-                            Hãy kết nối MetaMask bằng ví có quyền chuyển nhượng
-                            theo quy định của smart contract.
-                        </p>
-
-                        <button type="submit" class="full-button">
-                            Thực hiện chuyển nhượng
-                        </button>
+                        <button type="submit" class="full-button">Thực hiện chuyển nhượng</button>
                     </form>
                 </section>
             </div>
 
-            <section class="notice">
-                <strong>⚠️ Lưu ý:</strong>
-                Đây là ứng dụng học tập sử dụng Sepolia Testnet.
-                Dữ liệu blockchain là dữ liệu thử nghiệm, không phải hồ sơ
-                pháp lý về quyền sử dụng đất.
-            </section>
+            <p class="notice">
+                ⚠️ Đây là phiên bản mô phỏng kết nối Smart Contract trên Sepolia Testnet.
+            </p>
         </section>
     </main>
 
@@ -220,9 +99,9 @@
         <p>ĐẤTCHAIN — Đồ án ứng dụng Blockchain | Phiên bản học tập</p>
     </footer>
 
-    <!-- Phải nạp ethers.js trước script.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
+</html>"""
+</body>
 </html>
-```
