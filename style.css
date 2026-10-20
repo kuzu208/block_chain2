@@ -26,32 +26,31 @@ body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
 .panel h2 { margin-bottom: 8px; color: #1b4332; font-size: 1.4rem; font-weight: 600; }
 .panel p { color: #666; font-size: 0.95rem; margin-bottom: 20px; }
 
-/* SỬA LỖI Ô TRA CỨU & LÀM ĐẸP FORM */
+/* Form Tra Cứu (Đã sửa lỗi hiển thị ô nhập bằng Grid) */
 .inline-form { 
-    display: flex; 
+    display: grid; 
+    grid-template-columns: 1fr 140px; 
     gap: 12px; 
     align-items: center; 
     margin-top: 15px; 
 }
 .inline-form input { 
-    flex: 1 1 auto !important; 
-    width: auto !important;
-    min-width: 250px !important; 
-    height: 48px;
+    width: 100% !important; 
+    height: 48px !important;
+    margin: 0 !important;
     padding: 0 15px; 
     border: 2px solid #e0e0e0; 
     border-radius: 8px; 
     font-size: 1rem; 
-    transition: border-color 0.2s;
 }
 .inline-form input:focus {
-    border-color: #52b788;
+    border-color: #2d6a4f;
     outline: none;
 }
 .inline-form button {
-    width: 140px;
-    height: 48px;
-    margin-top: 0 !important;
+    width: 100% !important;
+    height: 48px !important;
+    margin: 0 !important;
     background: #2d6a4f;
     color: white;
     border: none;
@@ -61,7 +60,9 @@ body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
     cursor: pointer;
     transition: background 0.2s;
 }
-.inline-form button:hover { background: #1b4332; }
+.inline-form button:hover { 
+    background: #1b4332; 
+}
 
 /* Two Columns Layout */
 .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
@@ -85,7 +86,7 @@ button[type="submit"].full-button {
 button[type="submit"].full-button:hover { background: #1b4332; }
 
 /* Result Box */
-.result { margin-top: 20px; background: #e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #2d6a4f; font-size: 0.98srem; color: #1b4332; }
+.result { margin-top: 20px; background: #e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #2d6a4f; font-size: 0.98rem; color: #1b4332; }
 .result ul { margin-top: 10px; padding-left: 20px; }
 .result li { margin-bottom: 5px; }
 
@@ -95,6 +96,5 @@ footer { text-align: center; padding: 25px; color: #666; font-size: 0.9rem; bord
 @media (max-width: 768px) {
     .two-columns { grid-template-columns: 1fr; }
     .stats { flex-direction: column; }
-    .inline-form { flex-direction: column; }
-    .inline-form input, .inline-form button { width: 100% !important; }
+    .inline-form { grid-template-columns: 1fr; }
 }
