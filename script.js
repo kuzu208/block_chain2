@@ -66,7 +66,6 @@ document.getElementById('searchForm').addEventListener('submit', async (e) => {
         
         const chuSoHuu = await readContract.xemChuSoHuu(maSo);
         
-        // Nếu địa chỉ trả về là địa chỉ không (chưa đăng ký)
         if (!chuSoHuu || chuSoHuu === "0x0000000000000000000000000000000000000000") {
             resultDiv.innerHTML = `⚠️ Thửa đất số <strong>${maSo}</strong> chưa được đăng ký trên hệ thống!`;
             return;
@@ -94,6 +93,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const maSo = document.getElementById('landId').value.trim();
     const dienTich = document.getElementById('area').value.trim();
     const chuDauTien = document.getElementById('firstOwner').value.trim();
+    const resultDivMsg = document.getElementById('landInfo'); // Đã khai báo const đầy đủ
 
     try {
         const contractWithSigner = await getContractWithSigner();
@@ -101,7 +101,6 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         const tx = await contractWithSigner.dangKyThuaDat(maSo, dienTich, chuDauTien);
         alert("🚀 Đã gửi giao dịch! TxHash: " + tx.hash);
         
-        resultDivMsg = document.getElementById('landInfo');
         resultDivMsg.innerHTML = "⏳ Giao dịch đang được đào trên Sepolia, vui lòng đợi 10-15 giây...";
         
         await tx.wait();
