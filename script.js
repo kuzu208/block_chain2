@@ -44,7 +44,7 @@ let signer;
 let contract;
 let isRequesting = false;
 
-async function initConnection() { 
+async function initConnection() {
     if (!window.ethereum) {
         alert("Vui lòng cài đặt ví MetaMask!");
         return false;
@@ -59,12 +59,14 @@ async function getContractWithSigner() {
     const initialized = await initConnection();
     if (!initialized) throw new Error("MetaMask not found");
 
+    // Tránh spam yêu cầu kết nối nếu đang có tiến trình xử lý
     if (isRequesting) {
         throw new Error("Yêu cầu kết nối ví đang được xử lý, hãy kiểm tra MetaMask của bạn!");
     }
 
     try {
         isRequesting = true;
+        // Lấy danh sách tài khoản đã kết nối để kiểm tra trước
         const accounts = await provider.listAccounts();
         if (accounts.length === 0) {
             await provider.send("eth_requestAccounts", []);
@@ -77,7 +79,9 @@ async function getContractWithSigner() {
     }
 }
 
+// Đợi tài nguyên trang web load xong hoàn toàn
 document.addEventListener('DOMContentLoaded', () => {
+    // Tra cứu thửa đất
     document.getElementById('searchForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const maSo = document.getElementById('searchId').value.trim();
@@ -107,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Đăng ký thửa đất
     document.getElementById('registerForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const maSo = document.getElementById('landId').value.trim();
@@ -124,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Chuyển nhượng thửa đất
     document.getElementById('transferForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const maSo = document.getElementById('transferId').value.trim();
@@ -140,4 +146,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
